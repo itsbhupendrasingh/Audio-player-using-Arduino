@@ -50,7 +50,7 @@ void loop()
       Serial.println("1st Audio Start");
       delay(100);
       tmrpcm.play("sme1.wav");
-      delay(3000);
+      delay(6000);
     }
   }
   if(sw2s==HIGH)
@@ -62,7 +62,7 @@ void loop()
       Serial.println("2nd Audio Start");
       delay(100);
       tmrpcm.play("sme2.wav");
-      delay(2000);
+      delay(6000);
     }
   }  
 }
