@@ -8,7 +8,7 @@
     Pin 10 used here for consistency with other Arduino examples
 
  Connect Speaker pin to 9 pin.
- Switch to 2 and 3 no of pins.
+ Switch/ button to 2 and 3 no of pins.
     
  */
 
@@ -24,8 +24,8 @@ void setup(){
   
 Serial.begin(9600);
 tmrpcm.speakerPin = 9;
-pinMode(sw1, INPUT);
-pinMode(sw2, INPUT);
+pinMode(sw1, INPUT_PULLUP);
+pinMode(sw2, INPUT_PULLUP);
 Serial.println("Serial Begin");
 
 if (!SD.begin(SD_ChipSelectPin)) {
@@ -41,11 +41,11 @@ void loop()
 { 
   int sw1s=digitalRead(sw1);
   int sw2s=digitalRead(sw2);
-  if(sw1s==HIGH)
+  if(sw1s==LOW)
   {
     delay(10);
     sw1s=digitalRead(sw1);
-    if(sw1s==LOW)
+    if(sw1s==HIGH)
     {
       Serial.println("1st Audio Start");
       delay(100);
@@ -53,11 +53,11 @@ void loop()
       delay(6000);
     }
   }
-  if(sw2s==HIGH)
+  if(sw2s==LOW)
   {
     delay(10);
     sw2s=digitalRead(sw2);
-    if(sw2s==LOW)
+    if(sw2s==HIGH)
     {
       Serial.println("2nd Audio Start");
       delay(100);
